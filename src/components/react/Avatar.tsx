@@ -26,9 +26,9 @@ export const Avatar: React.FC<AvatarProps> = ({
   // Hero: >=160px desktop, ~100px mobile
   // About: >=180px desktop
   const sizeClasses = {
-    hero: 'w-[104px] h-[104px] sm:w-[130px] sm:h-[130px] md:w-[170px] md:h-[170px] lg:w-[180px] lg:h-[180px]',
-    about: 'w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] md:w-[190px] md:h-[190px] lg:w-[210px] lg:h-[210px]',
-    default: 'w-[104px] h-[104px] md:w-[160px] md:h-[160px]',
+    hero: 'w-[150px] h-[150px] sm:w-[190px] sm:h-[190px] md:w-[230px] md:h-[230px] lg:w-[250px] lg:h-[250px]',
+    about: 'w-[150px] h-[150px] sm:w-[190px] sm:h-[190px] md:w-[230px] md:h-[230px] lg:w-[250px] lg:h-[250px]',
+    default: 'w-[130px] h-[130px] md:w-[190px] md:h-[190px]',
   }[size];
 
   const fontSizeClasses = {
@@ -70,7 +70,7 @@ export const Avatar: React.FC<AvatarProps> = ({
             <img
               src={photoUrl}
               alt={portfolioData.identity.fullName}
-              className="w-full h-full object-cover object-[center_15%]"
+              className="w-full h-full object-cover scale-[1.5] origin-[50%_22%]"
             />
           ) : (
             <div className="flex flex-col items-center justify-center w-full h-full text-center">

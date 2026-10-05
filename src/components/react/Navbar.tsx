@@ -52,7 +52,7 @@ export const Navbar: React.FC = () => {
                 <img
                   src={portfolioData.identity.photoUrl}
                   alt={portfolioData.identity.fullName}
-                  className="w-full h-full object-cover object-[center_15%]"
+                  className="w-full h-full object-cover scale-[1.5] origin-[50%_22%]"
                 />
               ) : (
                 <span className="font-mono text-xs font-bold text-accent-blue">
