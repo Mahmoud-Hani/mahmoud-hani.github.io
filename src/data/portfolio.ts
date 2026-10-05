@@ -153,7 +153,7 @@ export const portfolioData: PortfolioData = {
     email: "mahmoud.hany.atlam@gmail.com",
     phone: "+201206110083",
     linkedIn: "https://www.linkedin.com/in/mahmoud-hany-atlam/",
-    github: "https://github.com/Mahmoud-Hanyi",
+    github: "https://github.com/Mahmoud-Hani",
     photoUrl: "/images/profile.jpg",
     hasPhoto: true,
   },
