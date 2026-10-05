@@ -1,0 +1,37 @@
+---
+import { portfolioData } from "../../data/portfolio";
+import { Flag } from "lucide-astro";
+
+const { labs } = portfolioData;
+---
+
+<div class="rounded-2xl bg-secondary/50 border border-border-subtle p-6 sm:p-8 mt-12">
+  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+    <div>
+      <div class="flex items-center gap-2 text-accent-teal mb-1">
+        <Flag class="w-4 h-4" aria-hidden="true" />
+        <span class="font-mono text-xs uppercase tracking-wider font-semibold">Practical Labs &amp; CTF Experience</span>
+      </div>
+      <h3 class="text-lg font-bold text-text-primary">
+        {labs.confirmed}
+      </h3>
+    </div>
+    <span class="self-start md:self-auto px-3 py-1 rounded-full text-xs font-mono text-accent-teal bg-accent-teal/10 border border-accent-teal/20">
+      {labs.hours} Hands-on Assessment
+    </span>
+  </div>
+
+  <p class="text-text-secondary text-sm leading-relaxed mb-4">
+    Hands-on participation in structured Capture The Flag challenges covering information gathering, scanning, vulnerability assessment, web application exploitation, and post-exploitation.
+  </p>
+
+  <div class="flex flex-wrap gap-2 pt-2">
+    {
+      labs.placeholders.map((ph) => (
+        <span class="px-3 py-1.5 rounded-lg text-xs font-mono text-text-muted bg-primary/60 border border-dashed border-border-subtle">
+          {ph}
+        </span>
+      ))
+    }
+  </div>
+</div>

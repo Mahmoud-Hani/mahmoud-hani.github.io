@@ -1,0 +1,32 @@
+---
+import { portfolioData } from "../../data/portfolio";
+import { Users } from "lucide-astro";
+
+const { volunteering } = portfolioData;
+---
+
+<div class="mt-16 pt-12 border-t border-border-subtle">
+  <h3 class="font-mono text-xs font-bold uppercase tracking-wider text-accent-blue mb-6 flex items-center gap-2">
+    <Users class="w-4 h-4" aria-hidden="true" />
+    Community &amp; Volunteering
+  </h3>
+  <div class="space-y-4">
+    {
+      volunteering.map((vol) => (
+        <div class="rounded-xl bg-card border border-border-subtle p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm">
+          <div class="space-y-1">
+            <span class="px-2.5 py-0.5 rounded text-[10px] font-mono font-semibold uppercase bg-accent-teal/10 text-accent-teal border border-accent-teal/20 inline-block mb-1">
+              Volunteer Role
+            </span>
+            <h4 class="text-base font-bold text-text-primary">{vol.role}</h4>
+            <p class="text-xs text-text-muted font-mono">{vol.organization}</p>
+            <p class="text-sm text-text-secondary pt-2 max-w-3xl leading-relaxed">{vol.description}</p>
+          </div>
+          <span class="self-start sm:self-auto font-mono text-xs text-accent-blue font-medium shrink-0">
+            {vol.period}
+          </span>
+        </div>
+      ))
+    }
+  </div>
+</div>

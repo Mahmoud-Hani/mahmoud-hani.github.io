@@ -1,0 +1,54 @@
+---
+import "../styles/global.css";
+import { portfolioData } from "../data/portfolio";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = portfolioData.seo.title,
+  description = portfolioData.seo.description,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content={portfolioData.identity.fullName} />
+    <meta name="keywords" content="Mahmoud Hany Atlam, Cybersecurity, Penetration Testing, Web Application Security, Network Security, Vulnerability Assessment, Security Analyst, Benha University" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={`${portfolioData.identity.fullName} Portfolio`} />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{title}</title>
+  </head>
+  <body
+    class="min-h-screen bg-primary text-text-primary font-sans antialiased selection:bg-accent-blue/20 selection:text-text-primary overflow-x-hidden"
+  >
+    <!-- Top-level background layers -->
+    <div class="fixed inset-0 bg-grid-pattern pointer-events-none z-0"></div>
+    <div class="fixed inset-0 bg-radial-glow pointer-events-none z-0"></div>
+    <div class="fixed inset-0 bg-noise pointer-events-none z-0"></div>
+
+    <!-- Main content container -->
+    <div class="relative z-10 flex flex-col min-h-screen">
+      <slot />
+    </div>
+  </body>
+</html>

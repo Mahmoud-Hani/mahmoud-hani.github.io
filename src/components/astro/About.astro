@@ -1,0 +1,152 @@
+---
+import { portfolioData } from "../../data/portfolio";
+import Avatar from "../react/Avatar";
+import SectionHeader from "./SectionHeader.astro";
+import { Shield, MapPin, GraduationCap, Crosshair } from "lucide-astro";
+
+const { education, summary, languages, securityProfile, professionalIdentity } = portfolioData;
+---
+
+<section id="about" class="py-20 sm:py-28 border-t border-border-subtle">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <SectionHeader
+      number="01"
+      title="About & Security Profile"
+      subtitle="Academic foundation, practical cybersecurity training, and specialized security focus areas."
+    />
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <!-- Left Column: Academic & Background Narrative -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="rounded-xl bg-card border border-border-subtle p-6 sm:p-8 space-y-4 shadow-sm">
+          <h3 class="text-lg font-bold text-text-primary flex items-center gap-2">
+            <Shield class="w-5 h-5 text-accent-blue" aria-hidden="true" />
+            Background & Focus
+          </h3>
+          <p class="text-text-secondary text-sm sm:text-base leading-relaxed">
+            {summary.factual}
+          </p>
+        </div>
+
+        <!-- Education Card -->
+        <div class="rounded-xl bg-card border border-border-subtle p-6 space-y-3 shadow-sm">
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-xs text-accent-blue uppercase tracking-wider flex items-center gap-1.5 font-semibold">
+              <GraduationCap class="w-4 h-4" aria-hidden="true" />
+              Academic Foundation
+            </span>
+            <span class="px-2.5 py-0.5 rounded text-xs font-mono font-semibold text-accent-teal bg-accent-teal/10 border border-accent-teal/20">
+              GPA: {education.gpa}
+            </span>
+          </div>
+          <div>
+            <h4 class="text-base font-bold text-text-primary">{education.degree}</h4>
+            <p class="text-xs sm:text-sm text-text-secondary mt-0.5">
+              {education.institution} — {education.department}
+            </p>
+            <div class="flex flex-wrap gap-4 text-xs font-mono text-text-muted mt-2.5">
+              <span class="flex items-center gap-1">
+                <MapPin class="w-3.5 h-3.5 text-text-dark" aria-hidden="true" />
+                {education.location}
+              </span>
+              <span>{education.startDate} – {education.endDate}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Languages -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {
+            languages.map((lang) => (
+              <div class="rounded-xl bg-card border border-border-subtle p-4 flex items-center justify-between shadow-sm">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-lg bg-secondary border border-border-subtle flex items-center justify-center font-mono text-xs font-bold text-accent-blue">
+                    {lang.code}
+                  </div>
+                  <div>
+                    <p class="text-xs font-bold text-text-primary">{lang.name}</p>
+                    <p class="text-[11px] text-text-muted font-mono">{lang.level}</p>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Right Column: Avatar & Security Profile Matrix -->
+      <div class="lg:col-span-5 space-y-6">
+        <div class="flex justify-center lg:justify-start">
+          <Avatar client:visible size="about" label="AppSec // Pentester" />
+        </div>
+
+        <div class="rounded-xl bg-card border border-border-subtle p-6 sm:p-8 space-y-5 shadow-lg relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-radial-glow pointer-events-none opacity-50"></div>
+          
+          <div class="flex items-center justify-between border-b border-border-subtle pb-4">
+            <span class="font-mono text-xs font-bold text-text-primary tracking-wider uppercase flex items-center gap-2">
+              <Crosshair class="w-4 h-4 text-accent-blue" aria-hidden="true" />
+              Security Profile Matrix
+            </span>
+            <span class="w-2 h-2 rounded-full bg-accent-teal animate-status-pulse"></span>
+          </div>
+
+          <!-- Profile Fields -->
+          <div class="space-y-4 text-xs">
+            <div>
+              <span class="font-mono text-text-dark uppercase tracking-wider block mb-1">
+                Primary Focus
+              </span>
+              <div class="p-2.5 rounded-lg bg-secondary border border-accent-blue/30 font-mono text-accent-blue font-semibold">
+                {securityProfile.primaryFocus}
+              </div>
+            </div>
+
+            <div>
+              <span class="font-mono text-text-dark uppercase tracking-wider block mb-1">
+                Secondary Focus
+              </span>
+              <div class="p-2.5 rounded-lg bg-secondary border border-border-subtle font-mono text-text-secondary">
+                {securityProfile.secondaryFocus}
+              </div>
+            </div>
+
+            <div>
+              <span class="font-mono text-text-dark uppercase tracking-wider block mb-1">
+                Additional Focus
+              </span>
+              <div class="p-2.5 rounded-lg bg-secondary border border-border-subtle font-mono text-text-secondary">
+                {securityProfile.additionalFocus}
+              </div>
+            </div>
+
+            <div>
+              <span class="font-mono text-text-dark uppercase tracking-wider block mb-2">
+                Key Security Interests
+              </span>
+              <div class="flex flex-wrap gap-1.5">
+                {
+                  securityProfile.interests.map((interest) => (
+                    <span class="px-2.5 py-1 rounded bg-secondary border border-border-subtle text-text-secondary font-mono text-[11px]">
+                      {interest}
+                    </span>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Career Target Callout -->
+        <div class="p-4 rounded-xl bg-secondary/80 border border-accent-blue/30 shadow-sm">
+          <span class="font-mono text-[10px] text-accent-blue uppercase tracking-wider block mb-0.5">
+            TARGET CAREER POSITION
+          </span>
+          <p class="text-sm font-bold text-text-primary font-mono">
+            {professionalIdentity.careerTarget}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

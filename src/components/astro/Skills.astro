@@ -1,0 +1,16 @@
+---
+import SectionHeader from "./SectionHeader.astro";
+import SkillsFilter from "../react/SkillsFilter";
+---
+
+<section id="skills" class="py-20 sm:py-28 border-t border-border-subtle">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <SectionHeader
+      number="02"
+      title="Technical Skillset & Tooling"
+      subtitle="Verified technical competencies, networking protocols, security platforms, and toolsets."
+    />
+
+    <SkillsFilter client:visible />
+  </div>
+</section>

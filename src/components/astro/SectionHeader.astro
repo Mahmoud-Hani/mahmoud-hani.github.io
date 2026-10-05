@@ -1,0 +1,30 @@
+---
+interface Props {
+  number: string;
+  title: string;
+  icon?: string;
+  subtitle?: string;
+}
+
+const { number, title, subtitle } = Astro.props;
+---
+
+<div class="mb-10 sm:mb-12">
+  <div class="flex items-center gap-3">
+    <div class="flex items-center gap-2 text-accent-blue font-mono text-xs uppercase tracking-widest font-bold">
+      <span>//</span>
+      <span>{number}</span>
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-text-primary">
+      {title}
+    </h2>
+    <div class="flex-1 h-px bg-border-subtle ml-4 hidden sm:block"></div>
+  </div>
+  {
+    subtitle && (
+      <p class="mt-2 text-text-muted text-sm sm:text-base max-w-2xl">
+        {subtitle}
+      </p>
+    )
+  }
+</div>

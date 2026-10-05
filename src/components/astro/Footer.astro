@@ -1,0 +1,80 @@
+---
+import { portfolioData } from "../../data/portfolio";
+import LinkedinIcon from "../icons/Linkedin.astro";
+import GithubIcon from "../icons/Github.astro";
+import { FileText } from "lucide-astro";
+
+const { identity } = portfolioData;
+---
+
+<footer class="border-t border-border-subtle bg-secondary/40 py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+      
+      <div class="space-y-1">
+        <div class="flex items-center justify-center md:justify-start gap-2.5">
+          <div class="w-7 h-7 rounded-md bg-secondary border border-border-subtle flex items-center justify-center overflow-hidden shrink-0">
+            {identity.hasPhoto && identity.photoUrl ? (
+              <img
+                src={identity.photoUrl}
+                alt={identity.fullName}
+                class="w-full h-full object-cover object-[center_15%]"
+              />
+            ) : (
+              <span class="font-mono text-xs font-bold text-accent-blue">
+                {identity.initials}
+              </span>
+            )}
+          </div>
+          <span class="font-bold text-base text-text-primary">
+            {identity.fullName}
+          </span>
+        </div>
+        <p class="font-mono text-xs text-text-muted">
+          Cybersecurity | Penetration Testing | Web Application Security
+        </p>
+      </div>
+
+      <div class="space-y-2 text-center md:text-right">
+        <div class="flex items-center justify-center md:justify-end gap-4 text-xs font-mono">
+          <a
+            href={identity.linkedIn}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-text-muted hover:text-accent-blue transition-colors flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-accent-blue rounded px-1"
+            aria-label="Mahmoud Hany Atlam on LinkedIn"
+          >
+            <LinkedinIcon class="w-3.5 h-3.5" />
+            LinkedIn
+          </a>
+          {identity.github && (
+            <a
+              href={identity.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-text-muted hover:text-accent-blue transition-colors flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-accent-blue rounded px-1"
+              aria-label="Mahmoud Hany Atlam on GitHub"
+            >
+              <GithubIcon class="w-3.5 h-3.5" />
+              GitHub
+            </a>
+          )}
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-text-muted hover:text-accent-blue transition-colors flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-accent-blue rounded px-1"
+            aria-label="Download Résumé PDF"
+          >
+            <FileText class="w-3.5 h-3.5" aria-hidden="true" />
+            Résumé
+          </a>
+        </div>
+        <p class="font-mono text-[11px] text-text-dark">
+          © {new Date().getFullYear()} {identity.fullName}. Built with security, curiosity, and continuous learning.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</footer>

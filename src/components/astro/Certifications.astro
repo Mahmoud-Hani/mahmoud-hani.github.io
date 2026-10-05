@@ -1,0 +1,41 @@
+---
+import { portfolioData } from "../../data/portfolio";
+import SectionHeader from "./SectionHeader.astro";
+import { Award } from "lucide-astro";
+
+const { certifications } = portfolioData;
+---
+
+<section id="certifications" class="py-20 sm:py-28 border-t border-border-subtle">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <SectionHeader
+      number="05"
+      title="Verified Certifications"
+      subtitle="Industry credentials and verified cybersecurity certifications."
+    />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {
+        certifications.map((cert) => (
+          <div class="rounded-xl bg-card border border-border-subtle p-6 flex items-start gap-4 shadow-md hover:border-accent-blue/30 transition-colors group">
+            <div class="p-3 rounded-lg bg-secondary border border-border-subtle group-hover:border-accent-blue/40 transition-colors shrink-0">
+              <Award class="w-6 h-6 text-accent-blue" aria-hidden="true" />
+            </div>
+            <div class="space-y-1.5 flex-1">
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-[10px] text-text-dark tracking-wider">{cert.id}</span>
+                <span class="font-mono text-xs text-accent-teal font-semibold">{cert.date}</span>
+              </div>
+              <h3 class="text-base font-bold text-text-primary group-hover:text-accent-blue transition-colors">
+                {cert.title}
+              </h3>
+              <p class="text-xs text-text-muted font-mono">
+                Issuer: {cert.issuer} {cert.duration ? `• ${cert.duration}` : ""}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
